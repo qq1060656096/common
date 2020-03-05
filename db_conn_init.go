@@ -2,39 +2,43 @@ package common
 
 import (
 	"fmt"
-	"github.com/go-redis/redis"
 	gormManager "github.com/qq1060656096/go-gorm-manager"
-	redisManager "github.com/qq1060656096/go-redis-manager"
+	"github.com/sirupsen/logrus"
 	"os"
-	"strconv"
 )
-
-var DbConnManager = gormManager.NewConnectionManager()
-var RedisConnManager = redisManager.NewConnectionManager()
 
 const (
 	DefaultDbConnName  = "default"
 	CommonDbConnName   = "common"
 	BusinessDbConnName = "business"
-
-	DefaultRedisConnName = "default"
-	AuthRedisConnName = "auth"
 )
 
-func init()  {
-	DbConnInit()
-	RedisInit()
-}
+var DbConnManager = gormManager.NewConnectionManager()
+
 
 func DbConnInit()  {
-	fmt.Println(os.Getenv("DEFAULT_DB"))
-	if os.Getenv("DEFAULT_DB") == "true" {
+	db, err := OsEnvManager.GetBool("DB")
+	if err != nil {
+		logrus.Infof("common.DbConnInit.os.env.key.DB:%s", err)
+	}
+
+	if db {
 		DefaultDbConnInit()
 	}
-	if os.Getenv("COMMON_DB") == "true" {
+
+	common, err := OsEnvManager.GetBool("COMMON_DB")
+	if err != nil {
+		logrus.Infof("common.DbConnInit.os.env.key.COMMON_DB:%s", err)
+	}
+	if common {
 		CommonDbConnInit()
 	}
-	if os.Getenv("BUSINESS_DB") == "true" {
+
+	business, err := OsEnvManager.GetBool("BUSINESS_DB")
+	if err != nil {
+		logrus.Infof("common.DbConnInit.os.env.key.BUSINESS_DB:%s", err)
+	}
+	if business {
 		BusinessDbConnInit()
 	}
 }
@@ -78,45 +82,12 @@ func ConnectDbMySQL(connName, user, pass, host, port, database, charset string) 
 		database,
 		charset,
 	)
+	fmt.Println(connName, dataSourceName, gormManager.ConnectionConfig{
+		DatabaseDriverName: gormManager.DRIVER_MY_SQL,
+		DataSourceName:     dataSourceName,
+	})
 	DbConnManager.Add(connName, &gormManager.ConnectionConfig{
 		DatabaseDriverName: gormManager.DRIVER_MY_SQL,
 		DataSourceName:     dataSourceName,
 	})
-}
-
-func RedisInit()  {
-	if os.Getenv("AUTH_REDIS") == "true" {
-		AuthRedisInit()
-	}
-	if os.Getenv("DEFUALT_REDUS") == "true" {
-		DefaultRedisInit()
-	}
-}
-
-func AuthRedisInit()  {
-	addr := os.Getenv("AUTH_REDIS_ADDR")
-	pass := os.Getenv("AUTH_REDIS_PASSWORD")
-	db := os.Getenv("AUTH_REDIS_DB")
-	dbInt, _ := strconv.Atoi(db)
-	ConnectionRedisInit(DefaultRedisConnName, &redis.Options{
-		Addr:     addr,
-		Password: pass, // no password set
-		DB:       dbInt,        // use default DB
-	})
-}
-
-func DefaultRedisInit()  {
-	addr := os.Getenv("DEFAULT_REDIS_ADDR")
-	pass := os.Getenv("DEFAULT_REDIS_PASSWORD")
-	db := os.Getenv("DEFAULT_REDIS_DB")
-	dbInt, _ := strconv.Atoi(db)
-	ConnectionRedisInit(DefaultRedisConnName, &redis.Options{
-		Addr:     addr,
-		Password: pass, // no password set
-		DB:       dbInt,        // use default DB
-	})
-}
-
-func ConnectionRedisInit(connName string, options *redis.Options)  {
-	redisManager.Add(connName, options)
 }
