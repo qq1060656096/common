@@ -5,11 +5,10 @@ import (
 	"os"
 	"strconv"
 )
+
 var OsEnvManager = &OsEnv{}
 
-
 type OsEnv struct {
-
 }
 
 func (e *OsEnv) Get(key string) string {

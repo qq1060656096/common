@@ -47,10 +47,14 @@ github.com/qq1060656096/go-gorm-manager v0.0.0-20200304024319-41e91fbe73df h1:uL
 github.com/qq1060656096/go-gorm-manager v0.0.0-20200304024319-41e91fbe73df/go.mod h1:U7yi67uLJ4gMLowRSOSJ9AWUsHL+S08G3r0pMRk/hVY=
 github.com/qq1060656096/go-gorm-manager v0.0.0-20200304033243-c7cddf14a207 h1:cTRQxGVmyIDAQi5EODlRrqejjkB/QPoNH3XwAyLNInU=
 github.com/qq1060656096/go-gorm-manager v0.0.0-20200304033243-c7cddf14a207/go.mod h1:U7yi67uLJ4gMLowRSOSJ9AWUsHL+S08G3r0pMRk/hVY=
+github.com/qq1060656096/go-gorm-manager v0.0.0-20200305023832-c37dc98a980f h1:xFQrj3d9RddfARcpw+BJa32vaSUeSw15Lfx1/pD8NyY=
+github.com/qq1060656096/go-gorm-manager v0.0.0-20200305023832-c37dc98a980f/go.mod h1:U7yi67uLJ4gMLowRSOSJ9AWUsHL+S08G3r0pMRk/hVY=
 github.com/qq1060656096/go-redis-manager v0.0.0-20200304024437-1f64420ca00d h1:7rBMnSGuucFeNq37artFvccM1bspTpX2nRgqo4K9clI=
 github.com/qq1060656096/go-redis-manager v0.0.0-20200304024437-1f64420ca00d/go.mod h1:qMCynZDgtcC5FMkEWKYmP994TQMUKY5wph16eNUoVCc=
 github.com/qq1060656096/go-redis-manager v0.0.0-20200304033259-e6c809ef5d95 h1:rSq7ZsYkv21gTBxP+JqGNxKJ3K8AYpYHLEBSqmsWeYw=
 github.com/qq1060656096/go-redis-manager v0.0.0-20200304033259-e6c809ef5d95/go.mod h1:qMCynZDgtcC5FMkEWKYmP994TQMUKY5wph16eNUoVCc=
+github.com/qq1060656096/go-redis-manager v0.0.0-20200305023531-a9b9d1fba9ec h1:wwEDAzxnEwYB8F5L4YB0n0sp622DljwK6SMWMXyC/hA=
+github.com/qq1060656096/go-redis-manager v0.0.0-20200305023531-a9b9d1fba9ec/go.mod h1:qMCynZDgtcC5FMkEWKYmP994TQMUKY5wph16eNUoVCc=
 github.com/sirupsen/logrus v1.4.2 h1:SPIRibHv4MatM3XXNO2BJeFLZwZ2LvZgfQ5+UNI2im4=
 github.com/sirupsen/logrus v1.4.2/go.mod h1:tLMulIdttU9McNUspp0xgXVQah82FyeX6MwdIuYE2rE=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=

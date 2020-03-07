@@ -9,6 +9,12 @@ import (
 godotenv.Load(".env.example")
 // 初始化数据连接
 DbConnInit()
-RedisConnInit()
+db, err := DbConnManager.Get("common").GetGormDB()
+
+	
 // 初始化redis连接
+RedisConnInit()
+redisClient := RedisConnManager.Get("default").GetRedisClient()
+
 ```
+

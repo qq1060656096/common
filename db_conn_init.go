@@ -15,8 +15,7 @@ const (
 
 var DbConnManager = gormManager.NewConnectionManager()
 
-
-func DbConnInit()  {
+func DbConnInit() {
 	db, err := OsEnvManager.GetBool("DB")
 	if err != nil {
 		logrus.Infof("common.DbConnInit.os.env.key.DB:%s", err)
@@ -82,10 +81,6 @@ func ConnectDbMySQL(connName, user, pass, host, port, database, charset string) 
 		database,
 		charset,
 	)
-	fmt.Println(connName, dataSourceName, gormManager.ConnectionConfig{
-		DatabaseDriverName: gormManager.DRIVER_MY_SQL,
-		DataSourceName:     dataSourceName,
-	})
 	DbConnManager.Add(connName, &gormManager.ConnectionConfig{
 		DatabaseDriverName: gormManager.DRIVER_MY_SQL,
 		DataSourceName:     dataSourceName,

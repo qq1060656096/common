@@ -1,21 +1,20 @@
 package common
 
 import (
-	redisManager "github.com/qq1060656096/go-redis-manager"
 	"github.com/go-redis/redis"
+	redisManager "github.com/qq1060656096/go-redis-manager"
 	"github.com/sirupsen/logrus"
 	"os"
 )
 
 const (
 	DefaultRedisConnName = "default"
-	AuthRedisConnName = "auth"
+	AuthRedisConnName    = "auth"
 )
 
 var RedisConnManager = redisManager.NewConnectionManager()
 
-
-func RedisConnInit()  {
+func RedisConnInit() {
 	dr, err := OsEnvManager.GetBool("DEFAULT_REDIS")
 	if err != nil {
 		logrus.Infof("common.RedisConnInit.os.env.key.DEFAULT_REDIS:%s", err)
@@ -33,7 +32,7 @@ func RedisConnInit()  {
 	}
 }
 
-func DefaultRedisConnInit()  {
+func DefaultRedisConnInit() {
 	addr := os.Getenv("DEFAULT_REDIS_ADDR")
 	pass := os.Getenv("DEFAULT_REDIS_PASSWORD")
 	db, err := OsEnvManager.GetInt("DEFAULT_REDIS_DB")
@@ -43,12 +42,11 @@ func DefaultRedisConnInit()  {
 	ConnectionRedisInit(DefaultRedisConnName, &redis.Options{
 		Addr:     addr,
 		Password: pass, // no password set
-		DB:       db,        // use default DB
+		DB:       db,   // use default DB
 	})
 }
 
-
-func AuthRedisConnInit()  {
+func AuthRedisConnInit() {
 	addr := os.Getenv("AUTH_REDIS_ADDR")
 	pass := os.Getenv("AUTH_REDIS_PASSWORD")
 	db, err := OsEnvManager.GetInt("AUTH_REDIS_DB")
@@ -58,10 +56,10 @@ func AuthRedisConnInit()  {
 	ConnectionRedisInit(AuthRedisConnName, &redis.Options{
 		Addr:     addr,
 		Password: pass, // no password set
-		DB:       db,        // use default DB
+		DB:       db,   // use default DB
 	})
 }
 
-func ConnectionRedisInit(connName string, options *redis.Options)  {
+func ConnectionRedisInit(connName string, options *redis.Options) {
 	RedisConnManager.Add(connName, options)
 }

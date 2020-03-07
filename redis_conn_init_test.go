@@ -9,5 +9,6 @@ import (
 func TestRedisConnInit(t *testing.T) {
 	godotenv.Load(".env.example")
 	RedisConnInit()
-	assert.Equal(t, true ,true)
+	redisClient := RedisConnManager.Get("default").GetRedisClient()
+	assert.True(t, redisClient != nil)
 }
