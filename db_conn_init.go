@@ -16,9 +16,9 @@ const (
 var DbConnManager = gormManager.NewConnectionManager()
 
 func DbConnInit() {
-	db, err := OsEnvManager.GetBool("DB")
+	db, err := OsEnvManager.GetBool("DEFAULT_DB")
 	if err != nil {
-		logrus.Infof("common.DbConnInit.os.env.key.DB:%s", err)
+		logrus.Warningf("common.DbConnInit.os.env.key.DB:%s", err)
 	}
 
 	if db {
@@ -27,7 +27,7 @@ func DbConnInit() {
 
 	common, err := OsEnvManager.GetBool("COMMON_DB")
 	if err != nil {
-		logrus.Infof("common.DbConnInit.os.env.key.COMMON_DB:%s", err)
+		logrus.Warningf("common.DbConnInit.os.env.key.COMMON_DB:%s", err)
 	}
 	if common {
 		CommonDbConnInit()
@@ -35,19 +35,19 @@ func DbConnInit() {
 
 	business, err := OsEnvManager.GetBool("BUSINESS_DB")
 	if err != nil {
-		logrus.Infof("common.DbConnInit.os.env.key.BUSINESS_DB:%s", err)
+		logrus.Warningf("common.DbConnInit.os.env.key.BUSINESS_DB:%s", err)
 	}
 	if business {
 		BusinessDbConnInit()
 	}
 }
 func DefaultDbConnInit() {
-	user := os.Getenv("DB_USERNAME")
-	pass := os.Getenv("DB_PASSWORD")
-	host := os.Getenv("DB_HOST")
-	port := os.Getenv("DB_PORT")
-	database := os.Getenv("DB_DATABASE")
-	charset := os.Getenv("DB_CHARSET")
+	user := os.Getenv("DEFAULT_DB_USERNAME")
+	pass := os.Getenv("DEFAULT_DB_PASSWORD")
+	host := os.Getenv("DEFAULT_DB_HOST")
+	port := os.Getenv("DEFAULT_DB_PORT")
+	database := os.Getenv("DEFAULT_DB_DATABASE")
+	charset := os.Getenv("DEFAULT_DB_CHARSET")
 	ConnectDbMySQL(DefaultDbConnName, user, pass, host, port, database, charset)
 }
 

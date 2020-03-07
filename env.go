@@ -13,7 +13,7 @@ type OsEnv struct {
 
 func (e *OsEnv) Get(key string) string {
 	s := os.Getenv(key)
-	logrus.Infof("common.Get.%s", s)
+	logrus.Warningf("common.Get.%s", s)
 	return s
 }
 
