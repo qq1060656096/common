@@ -63,3 +63,12 @@ func AuthRedisConnInit() {
 func ConnectionRedisInit(connName string, options *redis.Options) {
 	RedisConnManager.Add(connName, options)
 }
+
+
+func GetDefaultRedisConn() (*redis.Client) {
+	return RedisConnManager.Get(DefaultRedisConnName).GetRedisClient()
+}
+
+func GetAuthRedisConn() (*redis.Client) {
+	return RedisConnManager.Get(AuthRedisConnName).GetRedisClient()
+}

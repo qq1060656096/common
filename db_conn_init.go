@@ -4,6 +4,7 @@ import (
 	"fmt"
 	gormManager "github.com/qq1060656096/go-gorm-manager"
 	"github.com/sirupsen/logrus"
+	"github.com/jinzhu/gorm"
 	"os"
 )
 
@@ -85,4 +86,16 @@ func ConnectDbMySQL(connName, user, pass, host, port, database, charset string) 
 		DatabaseDriverName: gormManager.DRIVER_MY_SQL,
 		DataSourceName:     dataSourceName,
 	})
+}
+
+func GetDefaultDbConn() (*gorm.DB, error) {
+	return DbConnManager.Get(DefaultDbConnName).GetGormDB()
+}
+
+func GetCommonDbConn() (*gorm.DB, error) {
+	return DbConnManager.Get(CommonDbConnName).GetGormDB()
+}
+
+func GetBusinessDbConn() (*gorm.DB, error) {
+	return DbConnManager.Get(BusinessDbConnName).GetGormDB()
 }
