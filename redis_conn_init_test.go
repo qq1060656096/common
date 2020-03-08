@@ -7,7 +7,7 @@ import (
 )
 
 func TestRedisConnInit(t *testing.T) {
-	godotenv.Load(".env.example")
+	godotenv.Load("config/.cache.env")
 	RedisConnInit()
 	redisClient := GetDefaultRedisConn()
 	redisClient = GetAuthRedisConn()

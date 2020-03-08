@@ -7,7 +7,7 @@ import (
 )
 
 func TestInit(t *testing.T) {
-	godotenv.Load(".env.example")
+	godotenv.Load("config/.db.env")
 	DbConnInit()
 	db, err := GetDefaultDbConn()
 	db, err = GetCommonDbConn()
