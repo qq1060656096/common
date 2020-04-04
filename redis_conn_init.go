@@ -2,7 +2,7 @@ package common
 
 import (
 	"github.com/go-redis/redis"
-	redisManager "github.com/qq1060656096/go-redis-manager"
+	redisManager "github.com/qq1060656096/manager/redism"
 	"github.com/sirupsen/logrus"
 	"os"
 )
