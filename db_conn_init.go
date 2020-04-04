@@ -2,7 +2,7 @@ package common
 
 import (
 	"fmt"
-	gormManager "github.com/qq1060656096/go-gorm-manager"
+	gormManager "github.com/qq1060656096/manager/gormm"
 	"github.com/sirupsen/logrus"
 	"github.com/jinzhu/gorm"
 	"os"
