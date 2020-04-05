@@ -1,4 +1,4 @@
-module github.com/qq1060656096/go-common
+module github.com/qq1060656096/common
 
 go 1.13
 
