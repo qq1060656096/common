@@ -12,8 +12,7 @@ require (
 	github.com/mattn/go-sqlite3 v2.0.3+incompatible // indirect
 	github.com/onsi/ginkgo v1.12.0 // indirect
 	github.com/onsi/gomega v1.9.0 // indirect
-	github.com/qq1060656096/manager/gormm v0.0.0-20200405034203-a20482556fb6
-	github.com/qq1060656096/manager/redism v0.0.0-20200405034203-a20482556fb6
+	github.com/qq1060656096/manager v0.0.0-20200503020318-833daf3d5d65
 	github.com/sirupsen/logrus v1.4.2
 	github.com/stretchr/testify v1.5.1
 	golang.org/x/net v0.0.0-20190603091049-60506f45cf65 // indirect
